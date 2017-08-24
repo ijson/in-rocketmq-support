@@ -87,7 +87,6 @@ public abstract class AutoConfRocketMQ {
 
 
     public void init() {
-        ExtMap<String, Object> config = null;
         try {
             reload(ConfigFactory.getConfig(configName));
         } catch (IOException e) {
