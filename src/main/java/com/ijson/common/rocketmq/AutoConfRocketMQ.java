@@ -92,7 +92,6 @@ public abstract class AutoConfRocketMQ {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     protected abstract void doReload();
