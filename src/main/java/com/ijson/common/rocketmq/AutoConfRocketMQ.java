@@ -1,12 +1,11 @@
 package com.ijson.common.rocketmq;
 
 import com.google.common.collect.Maps;
-import com.ijson.rest.proxy.config.ConfigFactory;
-import com.ijson.rest.proxy.config.ExtMap;
+import com.ijson.config.ConfigFactory;
+import com.ijson.config.api.IConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -87,22 +86,18 @@ public abstract class AutoConfRocketMQ {
 
 
     public void init() {
-        try {
-            reload(ConfigFactory.getConfig(configName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ConfigFactory.getConfig(configName, this::reload);
     }
 
     protected abstract void doReload();
 
     protected abstract void shutDown();
 
-    protected void reload(ExtMap<String, Object> config) {
+    protected void reload(IConfig config) {
         log.info("====== start load rocketMQ " + configName + " config ======");
-        this.nameServer = config.getString(nameServerKey);
+        this.nameServer = config.get(nameServerKey);
         log.info("nameServer:" + nameServer);
-        this.groupName = config.getString(groupKey);
+        this.groupName = config.get(groupKey);
         log.info("groupName:" + groupName);
         this.consumeThreadMin = config.getInt("CONSUME_THREAD_MIN", 20);
         log.info("consumeThreadMin:" + consumeThreadMin);
@@ -117,7 +112,7 @@ public abstract class AutoConfRocketMQ {
         this.pullInterval = config.getInt("PULLINTERVAL", 0);
         log.info("pullInterval:" + pullInterval);
         if (topicKey != null) {
-            this.topics = parseTopics(config.getString(topicKey));
+            this.topics = parseTopics(config.get(topicKey));
         }
         log.info("topicKey:" + topics);
         log.info("====== start load rocketMQ " + configName + " config ======");

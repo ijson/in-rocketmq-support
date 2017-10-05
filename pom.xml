@@ -18,20 +18,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <rest.version>1.0.0</rest.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.ijson</groupId>
-            <artifactId>in-rest-proxy</artifactId>
-            <version>${rest.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.ijson.common</groupId>
+            <artifactId>in-auto-config-zkclient</artifactId>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.rocketmq</groupId>
