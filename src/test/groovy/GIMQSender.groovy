@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat
 /**
  * Created by cuiyongxu on 17/8/25.
  */
-class IMQSender extends Specification {
+class GIMQSender extends Specification {
 
     def configName = "in-mq-config"
 

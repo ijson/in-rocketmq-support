@@ -8,7 +8,7 @@ import spock.lang.Specification
 /**
  * Created by cuiyongxu on 17/8/25.
  */
-class IMConsumer extends Specification {
+class GIMConsumer extends Specification {
     def configName = "in-mq-config"
 
     def "接收MQ消息"() {
